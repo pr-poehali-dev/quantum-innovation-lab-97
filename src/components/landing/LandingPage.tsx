@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import Icon from '@/components/ui/icon'
 import { Button } from '@/components/ui/button'
 
@@ -82,6 +83,9 @@ const germanTariffs = [
 ]
 
 export default function LandingPage() {
+  const navigate = useNavigate()
+  const isLoggedIn = !!localStorage.getItem('token')
+
   return (
     <div className="min-h-screen bg-[#1a0533] text-white overflow-x-hidden">
 
@@ -123,9 +127,12 @@ export default function LandingPage() {
           ))}
         </div>
 
-        <Button className="bg-violet-600 hover:bg-violet-500 text-white text-sm px-4 py-2 h-auto rounded-lg flex items-center gap-2">
+        <Button
+          className="bg-violet-600 hover:bg-violet-500 text-white text-sm px-4 py-2 h-auto rounded-lg flex items-center gap-2"
+          onClick={() => navigate(isLoggedIn ? '/dashboard' : '/auth')}
+        >
           <Icon name="LayoutDashboard" size={14} />
-          Перейти в панель
+          {isLoggedIn ? 'Личный кабинет' : 'Перейти в панель'}
         </Button>
       </nav>
 
