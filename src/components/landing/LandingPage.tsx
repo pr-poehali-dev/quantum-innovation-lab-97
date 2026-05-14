@@ -33,6 +33,72 @@ const navLinks = [
   { icon: 'ShieldCheck', label: 'Бот защита' },
 ]
 
+const whyCards = [
+  {
+    icon: 'Gauge',
+    title: 'Производительность',
+    text: 'Мы очень серьезно относимся к производительности серверов. Постоянно добавляем новые узлы на AMD Ryzen 9 7950X/9950X и Intel Core i9-13900K со сверхбыстрой DDR5 памятью.',
+  },
+  {
+    icon: 'ShieldCheck',
+    title: 'DDoS Защита',
+    text: 'Особое внимание уделено DDoS защите. Используем инновационные решения и передовые технологии для надёжной защиты от атак любого объёма.',
+  },
+  {
+    icon: 'Handshake',
+    title: 'Сотрудничество',
+    text: 'Мы открыты для людей, которые хотят сотрудничать с нами! Готовы индивидуально обсудить условия партнёрства. У каждого есть шанс проявить себя.',
+  },
+  {
+    icon: 'MapPin',
+    title: 'Удобное расположение',
+    text: 'Наши серверы расположены в надёжных дата-центрах России и Германии. Стабильное соединение с минимальными задержками для игроков из Европы и СНГ.',
+  },
+  {
+    icon: 'Clock',
+    title: 'Круглосуточная поддержка',
+    text: 'Команда поддержки доступна 24/7 и готова оперативно решить любые вопросы. Ценим каждого клиента и стремимся дать максимально быстрый ответ.',
+  },
+  {
+    icon: 'BadgeDollarSign',
+    title: 'Лучшее соотношение цены',
+    text: 'Предлагаем оптимальное соотношение цены и качества на рынке. Все необходимые характеристики для стабильной работы игровых проектов любого масштаба.',
+  },
+]
+
+const germanTariffs = [
+  {
+    name: 'GAMING-ZERO',
+    price: '72',
+    cpu: '50% AMD Ryzen 9 7950X3D',
+    ram: '1.5 GB DDR4',
+    disk: '8 GB NVMe SSD',
+    ports: '1 портов',
+    backups: '0 бекапов',
+    databases: '1 баз данных',
+  },
+  {
+    name: 'GAMING-1',
+    price: '141',
+    cpu: '100% AMD Ryzen 9 7950X3D',
+    ram: '3 GB DDR4',
+    disk: '15 GB NVMe SSD',
+    ports: '2 портов',
+    backups: '1 бекапов',
+    databases: '1 баз данных',
+  },
+  {
+    name: 'GAMING-2',
+    price: '263',
+    cpu: '175% AMD Ryzen 9 7950X3D',
+    ram: '6 GB DDR4',
+    disk: '25 GB NVMe SSD',
+    ports: '3 портов',
+    backups: '1 бекапов',
+    databases: '2 баз данных',
+  },
+]
+
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#1a0533] text-white overflow-x-hidden">
@@ -77,7 +143,7 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero */}
-      <main className="relative z-10 max-w-7xl mx-auto px-8 py-20 flex flex-col lg:flex-row items-center gap-12">
+      <section className="relative z-10 max-w-7xl mx-auto px-8 py-20 flex flex-col lg:flex-row items-center gap-12">
 
         {/* Левая колонка */}
         <motion.div
@@ -125,7 +191,6 @@ export default function LandingPage() {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <div className="bg-[#2a1050]/80 border border-violet-500/30 rounded-2xl p-6 backdrop-blur-sm">
-            {/* Шапка карточки */}
             <div className="flex items-center gap-4 mb-6 pb-6 border-b border-white/10">
               <div className="w-14 h-14 rounded-xl bg-violet-900 border border-violet-500/40 flex items-center justify-center text-2xl font-black text-violet-300">
                 TX
@@ -136,7 +201,6 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Характеристики */}
             <div className="space-y-4">
               {[
                 { icon: 'Cpu', label: 'Процессор:', value: tariff.cpu, sub: tariff.cpuModel, progress: 50 },
@@ -166,7 +230,6 @@ export default function LandingPage() {
                 </div>
               ))}
 
-              {/* Локация */}
               <div className="flex items-center gap-3 pt-1">
                 <Icon name="MapPin" size={14} className="text-violet-400 flex-shrink-0" />
                 <span className="text-sm text-white/50 w-28">Локация:</span>
@@ -174,7 +237,6 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Цена и кнопка */}
             <div className="flex items-center justify-between mt-6 pt-5 border-t border-white/10">
               <div>
                 <div className="text-2xl font-bold">
@@ -189,8 +251,106 @@ export default function LandingPage() {
             </div>
           </div>
         </motion.div>
+      </section>
 
-      </main>
+      {/* Почему мы */}
+      <section className="relative z-10 max-w-7xl mx-auto px-8 py-20">
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-3">Почему стоит выбрать нас?</h2>
+          <div className="w-12 h-0.5 bg-violet-500 mx-auto" />
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {whyCards.map((card, i) => (
+            <motion.div
+              key={card.title}
+              className="flex gap-5 bg-[#22084a]/60 border border-violet-500/20 rounded-xl p-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+            >
+              <div className="w-14 h-14 rounded-xl bg-violet-900/60 border border-violet-500/20 flex items-center justify-center flex-shrink-0">
+                <Icon name={card.icon} size={24} className="text-violet-400" />
+              </div>
+              <div>
+                <h3 className="font-bold text-violet-300 mb-2">{card.title}</h3>
+                <p className="text-sm text-white/60 leading-relaxed">{card.text}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Тарифы Германия */}
+      <section className="relative z-10 max-w-7xl mx-auto px-8 py-20">
+        <motion.div
+          className="mb-10"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-2xl md:text-3xl font-bold mb-1">
+            Тарифы (Германия 🇩🇪)
+          </h2>
+          <div className="w-10 h-0.5 bg-violet-500 mt-3" />
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {germanTariffs.map((t, i) => (
+            <motion.div
+              key={t.name}
+              className="bg-[#1a0a2e] border border-violet-500/20 rounded-xl p-6 flex flex-col"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
+              {/* Шапка */}
+              <div className="flex items-center gap-2 mb-1">
+                <Icon name="Gamepad2" size={16} className="text-violet-400" />
+                <span className="font-bold text-sm tracking-widest text-white">{t.name}</span>
+              </div>
+              <div className="text-2xl font-bold mb-5">
+                {t.price}<span className="text-sm font-normal text-white/50">₽ / мес.</span>
+              </div>
+
+              {/* Характеристики */}
+              <div className="space-y-3 flex-1 mb-6">
+                {[
+                  { icon: 'Settings2', label: 'Процессор', value: t.cpu },
+                  { icon: 'MemoryStick', label: 'Оперативная память', value: t.ram },
+                  { icon: 'HardDrive', label: 'Хранилище', value: t.disk },
+                  { icon: 'Network', label: 'Сеть', value: t.ports },
+                  { icon: 'RefreshCw', label: 'Резервные копии', value: t.backups },
+                  { icon: 'Database', label: 'Базы данных', value: t.databases },
+                ].map((row) => (
+                  <div key={row.label} className="flex items-start gap-3">
+                    <Icon name={row.icon} size={14} className="text-violet-500 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <div className="text-xs text-violet-400 font-medium">{row.label}</div>
+                      <div className="text-xs text-white/60">{row.value}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <Button variant="outline" className="w-full border-violet-500/40 text-white/80 hover:bg-violet-900/40 hover:text-white bg-transparent h-auto py-2.5 text-sm flex items-center justify-center gap-2">
+                <Icon name="ShoppingCart" size={14} />
+                Перейти к покупке
+              </Button>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
     </div>
   )
 }
