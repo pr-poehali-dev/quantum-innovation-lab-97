@@ -5,26 +5,10 @@ import { Button } from '@/components/ui/button'
 const features = [
   { icon: 'Cpu', label: 'Высокопроизводительные AMD Ryzen 9 и Intel i9' },
   { icon: 'Shield', label: 'Продвинутая защита от DDoS атак' },
-  { icon: 'Globe', label: 'Бесплатные поддомены для серверов' },
   { icon: 'Users', label: 'Управление игроками прямо из панели' },
   { icon: 'Plug', label: 'Подключение без порта' },
   { icon: 'Package', label: 'Установка любых ядер в два клика' },
 ]
-
-const tariff = {
-  name: 'Агент',
-  description: 'Лучший выбор под большинство задач',
-  cpu: '3 ядра',
-  cpuModel: 'AMD Ryzen 9 7950X/9950X / Intel i9-13900K',
-  ram: '10 ГБ',
-  ramType: 'DDR5',
-  disk: '60 ГБ',
-  diskType: 'NVMe SSD',
-  ddos: 'Расширенная',
-  locations: ['🇷🇺', '🇩🇪'],
-  price: '639',
-  priceAlt: '4 042 ₸/мес',
-}
 
 const navLinks = [
   { icon: 'Home', label: 'Главная' },
@@ -183,74 +167,7 @@ export default function LandingPage() {
           </div>
         </motion.div>
 
-        {/* Правая колонка — карточка тарифа */}
-        <motion.div
-          className="w-full lg:w-[420px] flex-shrink-0"
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="bg-[#2a1050]/80 border border-violet-500/30 rounded-2xl p-6 backdrop-blur-sm">
-            <div className="flex items-center gap-4 mb-6 pb-6 border-b border-white/10">
-              <div className="w-14 h-14 rounded-xl bg-violet-900 border border-violet-500/40 flex items-center justify-center text-2xl font-black text-violet-300">
-                TX
-              </div>
-              <div>
-                <div className="font-bold text-lg">{tariff.name}</div>
-                <div className="text-sm text-white/50">{tariff.description}</div>
-              </div>
-            </div>
 
-            <div className="space-y-4">
-              {[
-                { icon: 'Cpu', label: 'Процессор:', value: tariff.cpu, sub: tariff.cpuModel, progress: 50 },
-                { icon: 'MemoryStick', label: 'Память (RAM):', value: tariff.ram, sub: tariff.ramType, progress: 65 },
-                { icon: 'HardDrive', label: 'Диск (SSD):', value: tariff.disk, sub: tariff.diskType, progress: 40 },
-                { icon: 'ShieldCheck', label: 'DDoS защита:', value: tariff.ddos, sub: null, progress: 85 },
-              ].map((row) => (
-                <div key={row.label}>
-                  <div className="flex items-start gap-3">
-                    <Icon name={row.icon} size={14} className="text-violet-400 mt-0.5 flex-shrink-0" />
-                    <div className="flex-1">
-                      <div className="flex justify-between text-sm mb-1">
-                        <span className="text-white/50">{row.label}</span>
-                        <div className="text-right">
-                          <span className="font-semibold text-white">{row.value}</span>
-                          {row.sub && <div className="text-[11px] text-white/40">{row.sub}</div>}
-                        </div>
-                      </div>
-                      <div className="h-1 bg-white/10 rounded-full">
-                        <div
-                          className="h-1 bg-gradient-to-r from-violet-500 to-violet-300 rounded-full"
-                          style={{ width: `${row.progress}%` }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-
-              <div className="flex items-center gap-3 pt-1">
-                <Icon name="MapPin" size={14} className="text-violet-400 flex-shrink-0" />
-                <span className="text-sm text-white/50 w-28">Локация:</span>
-                <div className="flex gap-1 text-lg">{tariff.locations.map((f, i) => <span key={i}>{f}</span>)}</div>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between mt-6 pt-5 border-t border-white/10">
-              <div>
-                <div className="text-2xl font-bold">
-                  {tariff.price}<span className="text-sm font-normal text-white/50">₽ / мес</span>
-                </div>
-                <div className="text-xs text-white/40">или {tariff.priceAlt}</div>
-              </div>
-              <Button className="bg-violet-600 hover:bg-violet-500 text-white px-5 py-2 h-auto rounded-lg flex items-center gap-2 text-sm font-semibold">
-                Заказать
-                <Icon name="ArrowRight" size={14} />
-              </Button>
-            </div>
-          </div>
-        </motion.div>
       </section>
 
       {/* Почему мы */}
