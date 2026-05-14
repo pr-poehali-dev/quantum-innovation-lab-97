@@ -275,6 +275,41 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Контакты */}
+      <section id="contacts" className="relative z-10 border-t border-white/10 mt-10">
+        <div className="max-w-7xl mx-auto px-8 py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">Контакты</h2>
+            <div className="w-10 h-0.5 bg-violet-500 mb-8" />
+
+            <a
+              href="https://t.me/TreexHostManager"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-4 bg-[#22084a]/60 border border-violet-500/20 rounded-xl px-6 py-4 hover:border-violet-400/50 hover:bg-violet-900/30 transition-all group"
+            >
+              <div className="w-10 h-10 rounded-full bg-violet-600 flex items-center justify-center flex-shrink-0">
+                <Icon name="Send" size={18} className="text-white" />
+              </div>
+              <div>
+                <div className="text-xs text-white/50 mb-0.5">Telegram</div>
+                <div className="text-white font-semibold group-hover:text-violet-300 transition-colors">t.me/TreexHostManager</div>
+              </div>
+              <Icon name="ArrowRight" size={16} className="text-violet-400 ml-2 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </motion.div>
+        </div>
+
+        <div className="border-t border-white/5 py-5 text-center text-xs text-white/30">
+          © 2025 TreexHosting — Надёжный игровой хостинг
+        </div>
+      </section>
+
     </div>
   )
 }
