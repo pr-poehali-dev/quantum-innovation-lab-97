@@ -6,15 +6,13 @@ const features = [
   { icon: 'Cpu', label: 'Высокопроизводительные AMD Ryzen 9 и Intel i9' },
   { icon: 'Shield', label: 'Продвинутая защита от DDoS атак' },
   { icon: 'Users', label: 'Управление игроками прямо из панели' },
-  { icon: 'Plug', label: 'Подключение без порта' },
   { icon: 'Package', label: 'Установка любых ядер в два клика' },
 ]
 
 const navLinks = [
-  { icon: 'Home', label: 'Главная' },
-  { icon: 'Info', label: 'Информация' },
-  { icon: 'Mail', label: 'Контакты' },
-  { icon: 'ShieldCheck', label: 'Бот защита' },
+  { icon: 'Home', label: 'Главная', href: '#hero' },
+  { icon: 'Info', label: 'Информация', href: '#why' },
+  { icon: 'Mail', label: 'Контакты', href: '#contacts' },
 ]
 
 const whyCards = [
@@ -110,13 +108,18 @@ export default function LandingPage() {
 
         <div className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
-            <button key={link.label} className="flex items-center gap-1.5 text-sm text-white/70 hover:text-white transition-colors">
+            <a
+              key={link.label}
+              href={link.href}
+              className="flex items-center gap-1.5 text-sm text-white/70 hover:text-white transition-colors"
+              onClick={(e) => {
+                e.preventDefault()
+                document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' })
+              }}
+            >
               <Icon name={link.icon} size={14} />
               {link.label}
-              {link.label === 'Бот защита' && (
-                <span className="ml-1 text-[9px] bg-violet-500 text-white px-1.5 py-0.5 rounded font-bold uppercase tracking-wide">NEW</span>
-              )}
-            </button>
+            </a>
           ))}
         </div>
 
@@ -127,7 +130,7 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero */}
-      <section className="relative z-10 max-w-7xl mx-auto px-8 py-20 flex flex-col lg:flex-row items-center gap-12">
+      <section id="hero" className="relative z-10 max-w-7xl mx-auto px-8 py-20 flex flex-col lg:flex-row items-center gap-12">
 
         {/* Левая колонка */}
         <motion.div
@@ -160,7 +163,11 @@ export default function LandingPage() {
               <Icon name="ArrowRight" size={16} />
               Создать сервер
             </Button>
-            <Button variant="outline" className="border-violet-500/50 text-white hover:bg-violet-900/40 px-6 py-3 h-auto text-sm font-semibold rounded-lg flex items-center gap-2 bg-transparent">
+            <Button
+              variant="outline"
+              className="border-violet-500/50 text-white hover:bg-violet-900/40 px-6 py-3 h-auto text-sm font-semibold rounded-lg flex items-center gap-2 bg-transparent"
+              onClick={() => document.querySelector('#tariffs')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               <Icon name="List" size={16} />
               Посмотреть тарифы
             </Button>
@@ -171,7 +178,7 @@ export default function LandingPage() {
       </section>
 
       {/* Почему мы */}
-      <section className="relative z-10 max-w-7xl mx-auto px-8 py-20">
+      <section id="why" className="relative z-10 max-w-7xl mx-auto px-8 py-20">
         <motion.div
           className="text-center mb-14"
           initial={{ opacity: 0, y: 30 }}
@@ -206,7 +213,7 @@ export default function LandingPage() {
       </section>
 
       {/* Тарифы Германия */}
-      <section className="relative z-10 max-w-7xl mx-auto px-8 py-20">
+      <section id="tariffs" className="relative z-10 max-w-7xl mx-auto px-8 py-20">
         <motion.div
           className="mb-10"
           initial={{ opacity: 0, y: 30 }}
