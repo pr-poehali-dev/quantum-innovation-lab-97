@@ -51,8 +51,8 @@ export default function AuthPage() {
       {/* Шапка */}
       <nav className="relative z-20 flex items-center justify-between px-8 py-4 border-b border-white/10">
         <a href="/" className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded bg-violet-500 flex items-center justify-center">
-            <Icon name="TreePine" size={18} className="text-white" />
+          <div className="w-8 h-8 rounded overflow-hidden flex items-center justify-center">
+            <img src="https://cdn.poehali.dev/projects/9a2f31c3-f374-4cc9-9eeb-5423f0b51d1d/bucket/2f0bc9ef-32a2-4ce3-8878-e7e9f2e0e860.png" alt="TREEX" className="w-full h-full object-contain" />
           </div>
           <span className="font-bold text-sm">
             <span className="text-violet-300">TREEX</span> HOSTING

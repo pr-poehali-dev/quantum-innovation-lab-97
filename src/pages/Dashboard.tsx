@@ -85,8 +85,8 @@ export default function Dashboard() {
         {/* Лого */}
         <div className="px-5 py-5 border-b border-white/8">
           <a href="/" className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded bg-violet-500 flex items-center justify-center">
-              <Icon name="TreePine" size={14} className="text-white" />
+            <div className="w-7 h-7 rounded overflow-hidden flex items-center justify-center">
+              <img src="https://cdn.poehali.dev/projects/9a2f31c3-f374-4cc9-9eeb-5423f0b51d1d/bucket/2f0bc9ef-32a2-4ce3-8878-e7e9f2e0e860.png" alt="TREEX" className="w-full h-full object-contain" />
             </div>
             <span className="font-bold text-sm">
               <span className="text-violet-300">TREEX</span> HOSTING
@@ -119,6 +119,15 @@ export default function Dashboard() {
 
         {/* Низ сайдбара */}
         <div className="border-t border-white/8 px-3 py-3 space-y-0.5">
+          <a
+            href="http://64.188.64.134"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-white/50 hover:text-violet-300 hover:bg-violet-500/10 transition-all"
+          >
+            <Icon name="Server" size={15} />
+            Панель управления
+          </a>
           <button
             onClick={() => navigate('/')}
             className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-white/50 hover:text-white hover:bg-white/5 transition-all"
@@ -186,13 +195,15 @@ export default function Dashboard() {
                 </div>
 
                 {/* Ссылки */}
-                <button
-                  onClick={() => navigate('/')}
+                <a
+                  href="http://64.188.64.134"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full flex items-center justify-center gap-2 py-4 text-sm text-white/40 hover:text-white hover:bg-white/3 transition-all"
                 >
                   перейти в панель управления
                   <Icon name="ArrowRight" size={14} />
-                </button>
+                </a>
                 <button
                   onClick={() => setPage('servers')}
                   className="w-full flex items-center justify-center gap-2 py-4 text-sm text-white/40 hover:text-white hover:bg-white/3 transition-all"

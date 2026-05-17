@@ -122,13 +122,26 @@ export default function LandingPage() {
           ))}
         </div>
 
-        <Button
-          className="border border-violet-500 bg-violet-600 hover:bg-violet-500 text-white text-sm px-5 py-2 h-auto rounded-lg flex items-center gap-2"
-          onClick={() => navigate(isLoggedIn ? '/dashboard' : '/auth')}
-        >
-          <Icon name="LayoutDashboard" size={14} />
-          {isLoggedIn ? 'Личный кабинет' : 'Перейти в панель'}
-        </Button>
+        <div className="flex items-center gap-2">
+          {isLoggedIn && (
+            <a
+              href="http://64.188.64.134"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-violet-400/50 bg-transparent hover:bg-violet-900/40 text-white text-sm px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+            >
+              <Icon name="Server" size={14} />
+              Панель
+            </a>
+          )}
+          <Button
+            className="border border-violet-500 bg-violet-600 hover:bg-violet-500 text-white text-sm px-5 py-2 h-auto rounded-lg flex items-center gap-2"
+            onClick={() => navigate(isLoggedIn ? '/dashboard' : '/auth')}
+          >
+            <Icon name="LayoutDashboard" size={14} />
+            {isLoggedIn ? 'Личный кабинет' : 'Перейти в панель'}
+          </Button>
+        </div>
       </nav>
 
       {/* Hero */}
