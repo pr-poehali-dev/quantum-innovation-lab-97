@@ -299,7 +299,7 @@ export default function LandingPage() {
             <div className="w-10 h-0.5 bg-violet-500 mb-8" />
 
             <a
-              href="https://t.me/TreexHostManager"
+              href="https://t.me/TreexHost_manager_bot"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-4 bg-[#22084a]/60 border border-violet-500/20 rounded-xl px-6 py-4 hover:border-violet-400/50 hover:bg-violet-900/30 transition-all group"
@@ -309,7 +309,7 @@ export default function LandingPage() {
               </div>
               <div>
                 <div className="text-xs text-white/50 mb-0.5">Telegram</div>
-                <div className="text-white font-semibold group-hover:text-violet-300 transition-colors">t.me/TreexHostManager</div>
+                <div className="text-white font-semibold group-hover:text-violet-300 transition-colors">t.me/TreexHost_manager_bot</div>
               </div>
               <Icon name="ArrowRight" size={16} className="text-violet-400 ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
