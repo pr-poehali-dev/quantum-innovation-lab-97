@@ -89,18 +89,13 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#1a0533] text-white overflow-x-hidden">
 
-      {/* фоновые пятна */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] rounded-full bg-purple-800/30 blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-5%] w-[400px] h-[400px] rounded-full bg-violet-700/20 blur-[100px]" />
-        <div className="absolute top-[40%] left-[30%] w-[300px] h-[300px] rounded-full bg-purple-600/10 blur-[80px]" />
-      </div>
+
 
       {/* Навигация */}
       <nav className="relative z-20 flex items-center justify-between px-8 py-4 backdrop-blur-sm">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded bg-violet-500 flex items-center justify-center">
-            <Icon name="TreePine" size={18} className="text-white" />
+          <div className="w-8 h-8 rounded overflow-hidden flex items-center justify-center">
+            <img src="https://cdn.poehali.dev/projects/9a2f31c3-f374-4cc9-9eeb-5423f0b51d1d/bucket/2f0bc9ef-32a2-4ce3-8878-e7e9f2e0e860.png" alt="TREEX" className="w-full h-full object-contain" />
           </div>
           <div>
             <div className="font-bold text-sm leading-none">
@@ -138,13 +133,16 @@ export default function LandingPage() {
 
       {/* Hero */}
       <section id="hero" className="relative z-10 overflow-hidden">
-        {/* Фоновое изображение Minecraft справа */}
-        <div
-          className="absolute inset-0 bg-cover bg-right bg-no-repeat"
-          style={{ backgroundImage: `url('https://cdn.poehali.dev/projects/9a2f31c3-f374-4cc9-9eeb-5423f0b51d1d/bucket/fbe01402-d45a-4b1f-8320-d96c3643730f.png')` }}
-        />
-        {/* Градиент поверх — затемняет правую часть, левая прозрачная */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1a0533] via-[#1a0533]/80 to-transparent" />
+        {/* Изображение Minecraft справа */}
+        <div className="absolute right-0 top-0 h-full w-1/2 pointer-events-none">
+          <img
+            src="https://cdn.poehali.dev/projects/9a2f31c3-f374-4cc9-9eeb-5423f0b51d1d/bucket/c05f22e4-6139-4e09-a26b-c3ca82ed5289.png"
+            alt=""
+            className="w-full h-full object-cover object-left"
+          />
+          {/* Градиент — плавный переход от фона к картинке */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1a0533] via-[#1a0533]/40 to-transparent" />
+        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-8 py-28">
           <motion.div
