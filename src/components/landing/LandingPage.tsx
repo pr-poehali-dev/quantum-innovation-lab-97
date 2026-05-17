@@ -97,7 +97,7 @@ export default function LandingPage() {
       </div>
 
       {/* Навигация */}
-      <nav className="relative z-20 flex items-center justify-between px-8 py-4 border-b border-white/10 backdrop-blur-sm">
+      <nav className="relative z-20 flex items-center justify-between px-8 py-4 backdrop-blur-sm">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded bg-violet-500 flex items-center justify-center">
             <Icon name="TreePine" size={18} className="text-white" />
@@ -110,7 +110,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -128,7 +128,7 @@ export default function LandingPage() {
         </div>
 
         <Button
-          className="bg-violet-600 hover:bg-violet-500 text-white text-sm px-4 py-2 h-auto rounded-lg flex items-center gap-2"
+          className="border border-violet-500 bg-violet-600 hover:bg-violet-500 text-white text-sm px-5 py-2 h-auto rounded-lg flex items-center gap-2"
           onClick={() => navigate(isLoggedIn ? '/dashboard' : '/auth')}
         >
           <Icon name="LayoutDashboard" size={14} />
@@ -137,51 +137,57 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero */}
-      <section id="hero" className="relative z-10 max-w-7xl mx-auto px-8 py-20 flex flex-col lg:flex-row items-center gap-12">
+      <section id="hero" className="relative z-10 overflow-hidden">
+        {/* Фоновое изображение Minecraft справа */}
+        <div
+          className="absolute inset-0 bg-cover bg-right bg-no-repeat"
+          style={{ backgroundImage: `url('https://cdn.poehali.dev/projects/9a2f31c3-f374-4cc9-9eeb-5423f0b51d1d/bucket/fbe01402-d45a-4b1f-8320-d96c3643730f.png')` }}
+        />
+        {/* Градиент поверх — затемняет правую часть, левая прозрачная */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1a0533] via-[#1a0533]/80 to-transparent" />
 
-        {/* Левая колонка */}
-        <motion.div
-          className="flex-1"
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-            Защищённый хостинг<br />
-            Майнкрафт серверов<br />
-            <span className="text-violet-300">С низкими ценами</span>
-          </h1>
+        <div className="relative z-10 max-w-7xl mx-auto px-8 py-28">
+          <motion.div
+            className="max-w-2xl"
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+              Защищённый хостинг<br />
+              Майнкрафт серверов<br />
+              <span className="text-violet-300">С низкими ценами</span>
+            </h1>
 
-          <div className="w-16 h-1 bg-violet-500 rounded mb-8 mt-6" />
+            <div className="w-16 h-1 bg-violet-500 rounded mb-10 mt-6" />
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-10">
-            {features.map((f) => (
-              <div key={f.label} className="flex flex-col items-center text-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-violet-900/60 border border-violet-500/30 flex items-center justify-center">
-                  <Icon name={f.icon} size={18} className="text-violet-300" />
+            <div className="flex flex-wrap gap-8 mb-12">
+              {features.map((f) => (
+                <div key={f.label} className="flex flex-col items-center text-center gap-2 w-24">
+                  <div className="w-14 h-14 rounded-full bg-violet-900/60 border border-violet-500/30 flex items-center justify-center">
+                    <Icon name={f.icon} size={22} className="text-violet-300" />
+                  </div>
+                  <span className="text-xs text-white/60 leading-tight">{f.label}</span>
                 </div>
-                <span className="text-xs text-white/60 leading-tight">{f.label}</span>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          <div className="flex flex-wrap gap-3">
-            <Button className="bg-violet-600 hover:bg-violet-500 text-white px-6 py-3 h-auto text-sm font-semibold rounded-lg flex items-center gap-2">
-              <Icon name="ArrowRight" size={16} />
-              Создать сервер
-            </Button>
-            <Button
-              variant="outline"
-              className="border-violet-500/50 text-white hover:bg-violet-900/40 px-6 py-3 h-auto text-sm font-semibold rounded-lg flex items-center gap-2 bg-transparent"
-              onClick={() => document.querySelector('#tariffs')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              <Icon name="List" size={16} />
-              Посмотреть тарифы
-            </Button>
-          </div>
-        </motion.div>
-
-
+            <div className="flex flex-wrap gap-3">
+              <Button className="bg-violet-600 hover:bg-violet-500 text-white px-8 py-4 h-auto text-base font-semibold rounded-xl flex items-center gap-2">
+                <Icon name="ArrowRight" size={16} />
+                Создать сервер
+              </Button>
+              <Button
+                variant="outline"
+                className="border-white/30 text-white hover:bg-violet-900/40 px-8 py-4 h-auto text-base font-semibold rounded-xl flex items-center gap-2 bg-transparent"
+                onClick={() => document.querySelector('#tariffs')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                <Icon name="List" size={16} />
+                Посмотреть тарифы
+              </Button>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* Почему мы */}
